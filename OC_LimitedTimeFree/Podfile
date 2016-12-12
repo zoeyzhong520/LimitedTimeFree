@@ -1,0 +1,10 @@
+source 'https://github.com/CocoaPods/Specs.git'
+platform :ios, '8.0'
+use_frameworks!
+
+target 'OC_LimitedTimeFree' do 
+    pod 'SDWebImage'
+    pod 'AFNetworking'
+    pod 'JSONModel'
+    pod 'MJRefresh'
+end
