@@ -1,0 +1,36 @@
+//
+//  PrefixHeader.pch
+//  OC_LimitedTimeFree
+//
+//  Created by zzj on 16/12/12.
+//  Copyright © 2016年 zzj. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#ifdef __OBJC__
+
+//OC和UI库
+#import <Foundation/Foundation.h>
+#import<UIKit/UIKit.h>
+
+//第三方库
+#import <JSONModel/JSONModel.h>
+#import <AFNetworking/AFNetworking.h>
+#import <MJRefresh/MJRefresh.h>
+#import <SDWebImage/UIImageView+WebCache.h>
+
+//自己写的头文件
+#import "LTDownloader.h"
+#import "TimeLimitModel.h"
+#import "Const.h"
+
+#endif
+
+
+
+#endif /* PrefixHeader_pch */
