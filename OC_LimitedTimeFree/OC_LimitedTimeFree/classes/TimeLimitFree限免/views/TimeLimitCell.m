@@ -7,8 +7,11 @@
 //
 
 #import "TimeLimitCell.h"
+#import "TimeLimitModel.h"
 
 @interface TimeLimitCell()
+
+@property (weak, nonatomic) IBOutlet UIImageView *bgImgView;
 
 @property (weak, nonatomic) IBOutlet UIImageView *leftImgView;
 
@@ -39,13 +42,23 @@
         cell = [[[NSBundle mainBundle] loadNibNamed:@"TimeLimitCell" owner:nil options:nil] lastObject];
     }
     
+    if (indexPath.row%2 == 0) {
+        cell.bgImgView.image = [UIImage imageNamed:@"cate_list_bg1"];
+    }else{
+        cell.bgImgView.image = [UIImage imageNamed:@"cate_list_bg2"];
+    }
+    
     cell.detailModel = detailModel;
     return cell;
     
 }
 
-- (void)configDetailModel:(TimeLimitDetail *)detailModel {
-    
+/*
+ set方法作用：提供一个方法给外界设置成员变量的值，有一定的安全性
+ 
+ set方法的命名规范：方法法必须以set开头，后面跟上成员变量的名称，并且成员变量的名称首字母大写
+ */
+- (void)setDetailModel:(TimeLimitDetail *)detailModel {
     _detailModel = detailModel;
     
     //图片
@@ -61,7 +74,7 @@
     self.currentPriceLabel.text = [NSString stringWithFormat:@"现价:¥ %@",detailModel.currentPrice];
     
     //原价
-    self.priceLabel.text = detailModel.lastPrice;
+    self.priceLabel.text = [NSString stringWithFormat:@"¥ %@",detailModel.lastPrice];
     
     //类型
     self.typeLabel.text = detailModel.categoryName;

@@ -26,8 +26,9 @@
 
 //自己写的头文件
 #import "LTDownloader.h"
-#import "TimeLimitModel.h"
 #import "Const.h"
+#import "UIButton+Util.h"
+#import "UILabel+Util.h"
 
 #endif
 

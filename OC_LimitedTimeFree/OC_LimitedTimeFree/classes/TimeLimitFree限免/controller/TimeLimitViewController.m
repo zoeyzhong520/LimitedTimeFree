@@ -8,6 +8,7 @@
 
 #import "TimeLimitViewController.h"
 #import "TimeLimitCell.h"
+#import "TimeLimitModel.h"
 
 @interface TimeLimitViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -37,10 +38,33 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
     self.view.backgroundColor = [UIColor whiteColor];
+    self.automaticallyAdjustsScrollViewInsets = NO;
     
     self.currentPage = 1;
     [self downloadData];
+    
+    [self configView];
+}
+
+- (void)configView {
+    UIButton *leftBtn = [UIButton createBtnTitle:@"分类" bgImgName:@"buttonbar_action" hightlightBgImgName:nil target:self action:@selector(clickLeftBtn)];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:leftBtn];
+    
+    UIButton *rightBtn = [UIButton createBtnTitle:@"设置" bgImgName:@"buttonbar_action" hightlightBgImgName:nil target:self action:@selector(clickRightBtn)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:rightBtn];
+    
+    UILabel *label = [UILabel createLabel:@"限免" textColor:[UIColor colorWithRed:63/255.0 green:157/255.0 blue:223/255.0 alpha:1] font:[UIFont boldSystemFontOfSize:25]];
+    self.navigationItem.titleView = label;
+}
+
+- (void)clickLeftBtn {
+    NSLog(@"left");
+}
+
+- (void)clickRightBtn {
+    NSLog(@"right");
 }
 
 //下载列表数据
@@ -94,8 +118,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     TimeLimitDetail *detail = self.model.applications[indexPath.row];
-    UITableViewCell *cell = nil;
-    cell = [TimeLimitCell TLCellForTableView:tableView atIndexPath:indexPath withModel:detail];
+    TimeLimitCell *cell = [TimeLimitCell TLCellForTableView:tableView atIndexPath:indexPath withModel:detail];
     
     return cell;
 }

@@ -10,6 +10,5 @@
 
 @interface TimeLimitViewController : BaseViewController
 
-@property (nonatomic, copy)NSString *url;
 
 @end
