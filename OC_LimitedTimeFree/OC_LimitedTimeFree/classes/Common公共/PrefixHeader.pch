@@ -23,6 +23,7 @@
 #import <AFNetworking/AFNetworking.h>
 #import <MJRefresh/MJRefresh.h>
 #import <SDWebImage/UIImageView+WebCache.h>
+#import <Masonry/Masonry.h>
 
 //自己写的头文件
 #import "LTDownloader.h"

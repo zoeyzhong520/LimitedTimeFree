@@ -12,7 +12,7 @@
 
 + (UIButton *)createBtnTitle:(NSString *)title bgImgName:(NSString *)bgImgName hightlightBgImgName:(NSString *)hightlightBgImgName target:(id)target action:(SEL)action {
     
-    UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 44, 30)];
+    UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 63, 30)];
     if (title) {
         [btn setTitle:title forState:UIControlStateNormal];
         [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];

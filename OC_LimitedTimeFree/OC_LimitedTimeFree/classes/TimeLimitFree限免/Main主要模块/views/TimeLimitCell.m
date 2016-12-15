@@ -8,6 +8,7 @@
 
 #import "TimeLimitCell.h"
 #import "TimeLimitModel.h"
+#import "StarView.h"
 
 @interface TimeLimitCell()
 
@@ -28,6 +29,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *collectLabel;
 
 @property (weak, nonatomic) IBOutlet UILabel *downloadLabel;
+
+@property (weak, nonatomic) IBOutlet StarView *starView;
 
 
 @end
@@ -87,6 +90,8 @@
     //下载
     self.downloadLabel.text = [NSString stringWithFormat:@"下载:%@",detailModel.downloads];
     
+    //星级
+    [self.starView changeStar:[detailModel.starCurrent floatValue]];
 }
 
 - (void)awakeFromNib {

@@ -7,4 +7,5 @@ target 'OC_LimitedTimeFree' do
     pod 'AFNetworking'
     pod 'JSONModel'
     pod 'MJRefresh'
+    pod 'Masonry'
 end

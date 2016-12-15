@@ -9,6 +9,7 @@
 #import "TimeLimitViewController.h"
 #import "TimeLimitCell.h"
 #import "TimeLimitModel.h"
+#import "TLFDetailViewController.h"
 
 @interface TimeLimitViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -119,8 +120,17 @@
     
     TimeLimitDetail *detail = self.model.applications[indexPath.row];
     TimeLimitCell *cell = [TimeLimitCell TLCellForTableView:tableView atIndexPath:indexPath withModel:detail];
-    
+    NSLog(@"%@",detail);
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    TLFDetailViewController *ctrl = [[TLFDetailViewController alloc] init];
+    TimeLimitDetail *detail = self.model.applications[indexPath.row];
+    ctrl.applicationId = detail.applicationId;
+    
+    [self.navigationController pushViewController:ctrl animated:YES];
 }
 
 @end
