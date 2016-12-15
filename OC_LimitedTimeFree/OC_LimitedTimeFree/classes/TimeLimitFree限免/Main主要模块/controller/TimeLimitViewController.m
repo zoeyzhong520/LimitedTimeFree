@@ -120,7 +120,7 @@
     
     TimeLimitDetail *detail = self.model.applications[indexPath.row];
     TimeLimitCell *cell = [TimeLimitCell TLCellForTableView:tableView atIndexPath:indexPath withModel:detail];
-    NSLog(@"%@",detail);
+    
     return cell;
 }
 

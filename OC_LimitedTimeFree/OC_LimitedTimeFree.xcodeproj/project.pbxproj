@@ -171,8 +171,8 @@
 		1E510C9F1E01241900973959 /* TLFDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E510C9E1E01241900973959 /* TLFDetailViewController.m */; };
 		1ED5E30F1E0232BC0089FFCB /* StarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1ED5E30E1E0232BC0089FFCB /* StarView.m */; };
 		1ED5E3121E023A130089FFCB /* TLFDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1ED5E3111E023A130089FFCB /* TLFDetailModel.m */; };
-		1ED5E3151E0240EA0089FFCB /* TLFDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1ED5E3141E0240EA0089FFCB /* TLFDetailView.m */; };
-		1ED5E3171E0245A10089FFCB /* TLFDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1ED5E3161E0245A10089FFCB /* TLFDetailView.xib */; };
+		1ED5E3151E0240EA0089FFCB /* TLDView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1ED5E3141E0240EA0089FFCB /* TLDView.m */; };
+		1ED5E3171E0245A10089FFCB /* TLDView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1ED5E3161E0245A10089FFCB /* TLDView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -382,9 +382,9 @@
 		1ED5E30E1E0232BC0089FFCB /* StarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StarView.m; sourceTree = "<group>"; };
 		1ED5E3101E023A130089FFCB /* TLFDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLFDetailModel.h; sourceTree = "<group>"; };
 		1ED5E3111E023A130089FFCB /* TLFDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLFDetailModel.m; sourceTree = "<group>"; };
-		1ED5E3131E0240EA0089FFCB /* TLFDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLFDetailView.h; sourceTree = "<group>"; };
-		1ED5E3141E0240EA0089FFCB /* TLFDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLFDetailView.m; sourceTree = "<group>"; };
-		1ED5E3161E0245A10089FFCB /* TLFDetailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TLFDetailView.xib; sourceTree = "<group>"; };
+		1ED5E3131E0240EA0089FFCB /* TLDView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLDView.h; sourceTree = "<group>"; };
+		1ED5E3141E0240EA0089FFCB /* TLDView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLDView.m; sourceTree = "<group>"; };
+		1ED5E3161E0245A10089FFCB /* TLDView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TLDView.xib; sourceTree = "<group>"; };
 		22B67ACD68BFAAB62E70604D /* Pods-OC_LimitedTimeFree.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OC_LimitedTimeFree.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OC_LimitedTimeFree/Pods-OC_LimitedTimeFree.debug.xcconfig"; sourceTree = "<group>"; };
 		71B06811322F42E47E158516 /* Pods_OC_LimitedTimeFree.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OC_LimitedTimeFree.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -911,9 +911,9 @@
 		1E510C8D1E0123CE00973959 /* views */ = {
 			isa = PBXGroup;
 			children = (
-				1ED5E3131E0240EA0089FFCB /* TLFDetailView.h */,
-				1ED5E3141E0240EA0089FFCB /* TLFDetailView.m */,
-				1ED5E3161E0245A10089FFCB /* TLFDetailView.xib */,
+				1ED5E3131E0240EA0089FFCB /* TLDView.h */,
+				1ED5E3141E0240EA0089FFCB /* TLDView.m */,
+				1ED5E3161E0245A10089FFCB /* TLDView.xib */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -1040,7 +1040,7 @@
 		1E05CA611DFE66B800816A5B /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = zzj;
 				TargetAttributes = {
 					1E05CA681DFE66B800816A5B = {
@@ -1215,7 +1215,7 @@
 				1E05CBA21DFE6A8B00816A5B /* tabbar_limitfree.png in Resources */,
 				1E05CBB41DFE6A8B00816A5B /* topic_Cell_Bg.png in Resources */,
 				1E05CB9F1DFE6A8B00816A5B /* tabbar_appfree_press@2x.png in Resources */,
-				1ED5E3171E0245A10089FFCB /* TLFDetailView.xib in Resources */,
+				1ED5E3171E0245A10089FFCB /* TLDView.xib in Resources */,
 				1E05CB651DFE6A8B00816A5B /* category_Business.jpg in Resources */,
 				1E05CBA91DFE6A8B00816A5B /* tabbar_rank_press@2x.png in Resources */,
 				1E05CB731DFE6A8B00816A5B /* category_Refer.jpg in Resources */,
@@ -1302,7 +1302,7 @@
 				1E0C84611DFFEE89002BEA7C /* UILabel+Util.m in Sources */,
 				1E05CA741DFE66B800816A5B /* ViewController.m in Sources */,
 				1E05CBDC1DFE735600816A5B /* BaseViewController.m in Sources */,
-				1ED5E3151E0240EA0089FFCB /* TLFDetailView.m in Sources */,
+				1ED5E3151E0240EA0089FFCB /* TLDView.m in Sources */,
 				1E05CBF21DFE874800816A5B /* LTDownloader.m in Sources */,
 				1E510C9B1E0123CE00973959 /* TimeLimitCell.m in Sources */,
 				1E05CBD71DFE718300816A5B /* MainTabBarViewController.m in Sources */,
@@ -1384,8 +1384,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -1428,8 +1430,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";

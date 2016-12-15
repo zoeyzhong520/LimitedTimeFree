@@ -8,30 +8,16 @@
 
 #import "TLFDetailViewController.h"
 #import "TLFDetailModel.h"
-#import "TLFDetailView.h"
+#import "TLDView.h"
+#import "TimeLimitModel.h"
 
 @interface TLFDetailViewController ()
 
-@property (nonatomic,strong)TLFDetailModel *model;
-
-@property (nonatomic,strong)TLFDetailView *detailView;
+@property (nonatomic,strong)TLDView *tldView;
 
 @end
 
 @implementation TLFDetailViewController
-
-- (TLFDetailView *)detailView {
-    if (_detailView == nil) {
-        _detailView = [[TLFDetailView alloc] init];
-        [self.view addSubview:_detailView];
-        
-        //约束
-        [_detailView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.edges.equalTo(self).insets(UIEdgeInsetsMake(64, 0, kScreenHeight-64, 0));
-        }];
-    }
-    return _detailView;
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -42,21 +28,39 @@
     [self downloadData];
 }
 
+
 //下载数据
 - (void)downloadData {
+    //头部部分
     NSString *urlString = [NSString stringWithFormat:@"http://iappfree.candou.com:8080/free/applications/%@?currency=rmb",self.applicationId];
     [LTDownloader downloadWithUrlString:urlString success:^(NSData *data) {
+        
         NSError *error = nil;
         if (error) {
             NSLog(@"%@",error);
         }else{
-            TLFDetailModel *model = [[TLFDetailModel alloc] initWithData:data error:nil];
-            self.model = model;
+            TLFDetailModel *model = [[TLFDetailModel alloc] initWithData:data error:&error];
             
             //刷新UI
-            dispatch_async(dispatch_get_main_queue(), ^{
-               
-            });
+            self.tldView = [TLDView TLFDetailViewWithModel:model];
+        }
+    } fail:^(NSError *error) {
+        NSLog(@"%@",error);
+    }];
+    
+    
+    //尾部部分
+    NSString *bottomUrlString = @"http://iappfree.candou.com:8080/free/applications/recommend?longitude=116.344539&latitude=40.034346";
+    [LTDownloader downloadWithUrlString:bottomUrlString success:^(NSData *data) {
+        
+        NSError *error = nil;
+        if (error) {
+            NSLog(@"%@",error);
+        }else{
+            TimeLimitModel *model = [[TimeLimitModel alloc] initWithData:data error:&error];
+            
+            [self.tldView configBottom:model];
+            [self.view addSubview:_tldView];
         }
     } fail:^(NSError *error) {
         NSLog(@"%@",error);

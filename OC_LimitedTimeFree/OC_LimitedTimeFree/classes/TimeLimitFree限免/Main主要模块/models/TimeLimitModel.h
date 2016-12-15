@@ -9,10 +9,23 @@
 #import <JSONModel/JSONModel.h>
 
 @protocol TimeLimitDetail;
+@protocol TimeLimitDetailPhotos;
 
 @interface TimeLimitModel : JSONModel
 
 @property (nonatomic, strong)NSArray<Optional,TimeLimitDetail> *applications;
+@property (nonatomic,strong)NSArray<Optional,TimeLimitDetailPhotos> *photos;
+
+@property (nonatomic, copy)NSString<Optional> *categoryName;
+@property (nonatomic, copy)NSString<Optional> *fileSize;
+@property (nonatomic, copy)NSString<Optional> *iconUrl;
+
+@property (nonatomic, copy)NSString<Optional> *name;
+@property (nonatomic, copy)NSString<Optional> *priceTrend;
+@property (nonatomic, copy)NSString<Optional> *starOverall;
+
+@property (nonatomic, copy)NSString<Optional> *description1;
+@property (nonatomic, copy)NSString<Optional> *lastPrice;
 
 @end
 
@@ -52,33 +65,9 @@
 
 @end
 
-/*
- "applications" : [
- {
- "applicationId" : "455680974",
- "categoryId" : 6014,
- "categoryName" : "Game",
- "currentPrice" : "0",
- "description" : "界面清新简单的音乐节奏游戏。游戏的操作非常简单，只需根据提示依次点击相应的图标即可，共有三种乐曲选择。",
- "downloads" : "5191",
- "expireDatetime" : "2016-12-12 16:43:40.0",
- "favorites" : "273",
- "fileSize" : "16.69",
- "iconUrl" : "http://photo.candou.com/i/114/55b07f3725eae8b3cafc9bce10d16e46",
- "ipa" : "1",
- "itunesUrl" : "http://itunes.apple.com/cn/app/rhythm-repeat/id455680974?mt=8",
- "lastPrice" : "12",
- "name" : "节奏重复",
- "priceTrend" : "limited",
- "ratingOverall" : "0",
- "releaseDate" : "2014-07-01",
- "releaseNotes" : "Multi-Touch bug fixed",
- "shares" : "390",
- "slug" : "rhythm-repeat",
- "starCurrent" : "4.0",
- "starOverall" : "4.0",
- "updateDate" : "2014-10-17 15:45:27",
- "version" : "2.3"
- },
+@interface TimeLimitDetailPhotos : JSONModel
 
- */
+@property (nonatomic,copy)NSString<Optional> *originalUrl;
+@property (nonatomic,copy)NSString<Optional> *smallUrl;
+
+@end
