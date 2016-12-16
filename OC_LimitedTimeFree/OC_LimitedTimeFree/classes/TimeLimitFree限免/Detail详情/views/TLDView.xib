@@ -92,13 +92,13 @@
                             </connections>
                         </button>
                         <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jiU-Cz-UnX" userLabel="topScrollView">
-                            <rect key="frame" x="0.0" y="130" width="355" height="160"/>
+                            <rect key="frame" x="0.0" y="130" width="355" height="240"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="160" id="WPv-lD-gex"/>
+                                <constraint firstAttribute="height" constant="240" id="WPv-lD-gex"/>
                             </constraints>
                         </scrollView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vWj-le-BAk" userLabel="descLabel">
-                            <rect key="frame" x="10" y="300" width="335" height="18"/>
+                            <rect key="frame" x="10" y="380" width="335" height="18"/>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>

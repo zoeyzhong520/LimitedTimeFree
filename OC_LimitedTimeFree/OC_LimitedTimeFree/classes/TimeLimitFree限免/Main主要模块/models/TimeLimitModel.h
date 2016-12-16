@@ -9,23 +9,10 @@
 #import <JSONModel/JSONModel.h>
 
 @protocol TimeLimitDetail;
-@protocol TimeLimitDetailPhotos;
 
 @interface TimeLimitModel : JSONModel
 
 @property (nonatomic, strong)NSArray<Optional,TimeLimitDetail> *applications;
-@property (nonatomic,strong)NSArray<Optional,TimeLimitDetailPhotos> *photos;
-
-@property (nonatomic, copy)NSString<Optional> *categoryName;
-@property (nonatomic, copy)NSString<Optional> *fileSize;
-@property (nonatomic, copy)NSString<Optional> *iconUrl;
-
-@property (nonatomic, copy)NSString<Optional> *name;
-@property (nonatomic, copy)NSString<Optional> *priceTrend;
-@property (nonatomic, copy)NSString<Optional> *starOverall;
-
-@property (nonatomic, copy)NSString<Optional> *description1;
-@property (nonatomic, copy)NSString<Optional> *lastPrice;
 
 @end
 
@@ -65,9 +52,4 @@
 
 @end
 
-@interface TimeLimitDetailPhotos : JSONModel
 
-@property (nonatomic,copy)NSString<Optional> *originalUrl;
-@property (nonatomic,copy)NSString<Optional> *smallUrl;
-
-@end

@@ -10,10 +10,6 @@
 
 @implementation TimeLimitModel
 
-+ (JSONKeyMapper *)keyMapper {
-    return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{@"description1":@"description"}];
-}
-
 @end
 
 @implementation TimeLimitDetail
@@ -24,6 +20,3 @@
 
 @end
 
-@implementation TimeLimitDetailPhotos
-
-@end

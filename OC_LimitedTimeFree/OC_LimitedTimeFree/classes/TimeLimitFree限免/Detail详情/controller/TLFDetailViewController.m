@@ -31,6 +31,8 @@
 
 //下载数据
 - (void)downloadData {
+    
+    [ProgressHUD show:@"Loading" Interaction:NO];
     //头部部分
     NSString *urlString = [NSString stringWithFormat:@"http://iappfree.candou.com:8080/free/applications/%@?currency=rmb",self.applicationId];
     [LTDownloader downloadWithUrlString:urlString success:^(NSData *data) {
@@ -43,6 +45,14 @@
             
             //刷新UI
             self.tldView = [TLDView TLFDetailViewWithModel:model];
+            
+            //使用闭包
+            __weak typeof(self) weakSelf = self;
+            _tldView.jumpBlock = ^(NSString *value) {
+                TLFDetailViewController *ctrl = [[TLFDetailViewController alloc] init];
+                ctrl.applicationId = value;
+                [weakSelf.navigationController pushViewController:ctrl animated:YES];
+            };
         }
     } fail:^(NSError *error) {
         NSLog(@"%@",error);
@@ -59,8 +69,12 @@
         }else{
             TimeLimitModel *model = [[TimeLimitModel alloc] initWithData:data error:&error];
             
-            [self.tldView configBottom:model];
-            [self.view addSubview:_tldView];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.tldView configBottom:model];
+                [self.view addSubview:_tldView];
+                
+                [ProgressHUD showSuccess:@"All done!" Interaction:NO];
+            });
         }
     } fail:^(NSError *error) {
         NSLog(@"%@",error);

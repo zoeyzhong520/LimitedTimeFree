@@ -39,7 +39,15 @@
 
 //头部部分的按钮点击事件
 - (IBAction)clickBtn:(UIButton *)sender {
-    
+    NSInteger index = sender.tag-100;
+    if (index == 0) {
+        NSLog(@"share");
+    }else if (index == 1) {
+        NSLog(@"collect");
+    }else{
+        NSString *urlString = [NSString stringWithFormat:@"%@",_dModel.itunesUrl];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlString]];
+    }
 }
 
 
@@ -52,6 +60,7 @@
 
 
 - (void)config:(TLFDetailModel *)detailModel {
+    _dModel = detailModel;
     
     self.frame = CGRectMake(0, 64, kScreenWidth, kScreenHeight-64-49);
     
@@ -69,8 +78,8 @@
     //topScrollView
     //循环创建图片
     for (int i=0;i<detailModel.photos.count;i++) {
-        TimeLimitDetailPhotos *photoModel = detailModel.photos[i];
-        UIImageView *imgView = [[UIImageView alloc] initWithFrame:CGRectMake((kScreenWidth-10-10)*i, 0, kScreenWidth-10-10, 160)];
+        TLFDetailPhotos *photoModel = detailModel.photos[i];
+        UIImageView *imgView = [[UIImageView alloc] initWithFrame:CGRectMake((kScreenWidth-10-10)*i, 0, kScreenWidth-10-10, 240)];
         NSURL *url = [NSURL URLWithString:photoModel.originalUrl];
         if (url != nil) {
             [imgView sd_setImageWithURL:url];
@@ -85,18 +94,35 @@
 }
 
 - (void)configBottom:(TimeLimitModel *)detailModel {
+    _model = detailModel;
+    
     /*底部部分*/
     for (int i=0;i<detailModel.applications.count;i++) {
-        TimeLimitModel *model = detailModel.applications[i];
-        UIImageView *imgView = [[UIImageView alloc] initWithFrame:CGRectMake((kScreenWidth-10-10)*i/5, 0, 50, 50)];
+        TimeLimitDetail *model = detailModel.applications[i];
+        UIImageView *imgView = [[UIImageView alloc] initWithFrame:CGRectMake((kScreenWidth-10-10)*i/5+10, 0, (kScreenWidth-10-10)/5-20, 50)];
         NSURL *url = [NSURL URLWithString:model.iconUrl];
         if (url != nil) {
             [imgView sd_setImageWithURL:url];
         }
+        imgView.userInteractionEnabled = YES;
+        imgView.tag = 200+i;
+        
+        //添加手势点击
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapClick:)];
+        [imgView addGestureRecognizer:tap];
+        
         [self.bottomScrollView addSubview:imgView];
     }
-    //设置滚动范围
-    //self.bottomScrollView.contentSize = CGSizeMake((kScreenWidth-10-10)*detailModel.applications.count, 0);
+}
+
+- (void)tapClick:(UITapGestureRecognizer *)Tap {
+    
+    NSInteger index = Tap.view.tag-200;
+    TimeLimitDetail *model = _model.applications[index];
+    
+    //使用闭包
+    self.jumpBlock(model.applicationId);
+    
 }
 
 @end

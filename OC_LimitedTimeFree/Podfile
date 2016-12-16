@@ -8,4 +8,5 @@ target 'OC_LimitedTimeFree' do
     pod 'JSONModel'
     pod 'MJRefresh'
     pod 'Masonry'
+    pod 'ProgressHUD'
 end

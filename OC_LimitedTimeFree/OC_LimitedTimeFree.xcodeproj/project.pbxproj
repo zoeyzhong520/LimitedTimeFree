@@ -173,6 +173,7 @@
 		1ED5E3121E023A130089FFCB /* TLFDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1ED5E3111E023A130089FFCB /* TLFDetailModel.m */; };
 		1ED5E3151E0240EA0089FFCB /* TLDView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1ED5E3141E0240EA0089FFCB /* TLDView.m */; };
 		1ED5E3171E0245A10089FFCB /* TLDView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1ED5E3161E0245A10089FFCB /* TLDView.xib */; };
+		1EEA22581E03DDDA00FFE5C8 /* SearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EEA22571E03DDDA00FFE5C8 /* SearchBar.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -385,6 +386,8 @@
 		1ED5E3131E0240EA0089FFCB /* TLDView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLDView.h; sourceTree = "<group>"; };
 		1ED5E3141E0240EA0089FFCB /* TLDView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLDView.m; sourceTree = "<group>"; };
 		1ED5E3161E0245A10089FFCB /* TLDView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TLDView.xib; sourceTree = "<group>"; };
+		1EEA22561E03DDDA00FFE5C8 /* SearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchBar.h; sourceTree = "<group>"; };
+		1EEA22571E03DDDA00FFE5C8 /* SearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchBar.m; sourceTree = "<group>"; };
 		22B67ACD68BFAAB62E70604D /* Pods-OC_LimitedTimeFree.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OC_LimitedTimeFree.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OC_LimitedTimeFree/Pods-OC_LimitedTimeFree.debug.xcconfig"; sourceTree = "<group>"; };
 		71B06811322F42E47E158516 /* Pods_OC_LimitedTimeFree.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OC_LimitedTimeFree.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -506,6 +509,8 @@
 				1E05CBEC1DFE7D3B00816A5B /* Const.h */,
 				1E05CBF01DFE874800816A5B /* LTDownloader.h */,
 				1E05CBF11DFE874800816A5B /* LTDownloader.m */,
+				1EEA22561E03DDDA00FFE5C8 /* SearchBar.h */,
+				1EEA22571E03DDDA00FFE5C8 /* SearchBar.m */,
 			);
 			path = "Common公共";
 			sourceTree = "<group>";
@@ -1306,6 +1311,7 @@
 				1E05CBF21DFE874800816A5B /* LTDownloader.m in Sources */,
 				1E510C9B1E0123CE00973959 /* TimeLimitCell.m in Sources */,
 				1E05CBD71DFE718300816A5B /* MainTabBarViewController.m in Sources */,
+				1EEA22581E03DDDA00FFE5C8 /* SearchBar.m in Sources */,
 				1E05CA711DFE66B800816A5B /* AppDelegate.m in Sources */,
 				1E05CBE81DFE739E00816A5B /* SubjectViewController.m in Sources */,
 				1E05CBE21DFE738600816A5B /* DepreciateViewController.m in Sources */,

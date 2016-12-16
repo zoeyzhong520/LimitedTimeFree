@@ -13,10 +13,17 @@
 
 @interface TLDView : UIView
 
+@property (nonatomic,strong)TimeLimitModel *model;
+
+@property (nonatomic,strong)TLFDetailModel *dModel;
+
 + (instancetype)TLFDetailViewWithModel:(TLFDetailModel *)model;
 
 - (void)config:(TLFDetailModel *)detailModel;
 
 - (void)configBottom:(TimeLimitModel *)detailModel;
+
+//block
+@property (nonatomic,strong) void (^jumpBlock)(NSString *value);
 
 @end

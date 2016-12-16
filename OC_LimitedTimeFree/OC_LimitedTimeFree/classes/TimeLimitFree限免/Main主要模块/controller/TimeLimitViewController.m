@@ -21,6 +21,9 @@
 //表格
 @property (nonatomic, strong)UITableView *tableView;
 
+//searchBar
+@property (nonatomic, strong)UISearchBar *searchBar;
+
 @end
 
 @implementation TimeLimitViewController
@@ -32,6 +35,12 @@
         _tableView.delegate = self;
         _tableView.dataSource = self;
         [self.view addSubview:_tableView];
+        
+        //header
+        _tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadFirst)];
+        
+        //footer
+        _tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadNext)];
     }
     return _tableView;
 }
@@ -39,7 +48,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
     self.view.backgroundColor = [UIColor whiteColor];
     self.automaticallyAdjustsScrollViewInsets = NO;
     
@@ -49,7 +57,31 @@
     [self configView];
 }
 
+- (void)loadFirst {
+    self.currentPage = 1;
+    [self downloadData];
+}
+
+- (void)loadNext {
+    self.currentPage++;
+    [self downloadData];
+}
+
+//searchBar
+- (void)addSearchBar {
+    _searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 30)];
+    _searchBar.placeholder = @"60万款应用搜索看";
+    _searchBar.translucent = YES;
+    _searchBar.showsSearchResultsButton = YES;
+    _searchBar.searchResultsButtonSelected = NO;
+    _searchBar.keyboardType = UIKeyboardTypeWebSearch;
+    _searchBar.showsScopeBar = YES;
+    self.tableView.tableHeaderView = _searchBar;
+}
+
 - (void)configView {
+    [self addSearchBar];
+    
     UIButton *leftBtn = [UIButton createBtnTitle:@"分类" bgImgName:@"buttonbar_action" hightlightBgImgName:nil target:self action:@selector(clickLeftBtn)];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:leftBtn];
     
@@ -70,6 +102,9 @@
 
 //下载列表数据
 - (void)downloadData {
+    
+    [ProgressHUD show:@"Loading" Interaction:NO];
+    
     //http://iappfree.candou.com:8080/free/applications/limited?currency=rmb&page=%ld
     NSString *urlString = [NSString stringWithFormat:@"http://iappfree.candou.com:8080/free/applications/limited?currency=rmb&page=%ld",self.currentPage];
     [LTDownloader downloadWithUrlString:urlString success:^(NSData *data) {
@@ -80,15 +115,29 @@
         if (err) {
             NSLog(@"%@",err);
         }else{
-            self.model = model;
+            if (self.currentPage == 1) {
+                self.model = model;
+            }else{
+                NSMutableArray *tmpArray = [NSMutableArray arrayWithArray:self.model.applications];
+                [tmpArray addObjectsFromArray:model.applications];
+                model.applications = (NSArray <Optional,TimeLimitDetail> *)tmpArray;
+                self.model = model;
+            }
+            
             
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.tableView reloadData];
+                
+                //结束第三方库刷新
+                [self.tableView.mj_header endRefreshing];
+                [self.tableView.mj_footer endRefreshing];
+                
+                [ProgressHUD showSuccess:@"All done!"];
             });
         }
         
     } fail:^(NSError *error) {
-        NSLog(@"%@",error);
+        [ProgressHUD showError:@"Error!"];
     }];
 }
 
